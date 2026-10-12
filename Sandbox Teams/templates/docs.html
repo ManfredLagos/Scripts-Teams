@@ -1,0 +1,145 @@
+{% extends 'navbarAdmin.html' %}
+
+{% block content %}
+    <main>
+
+        <div class="bienvenido">
+            <h1>Documentación</h1>
+        </div>
+
+        <div style="display: flex; justify-content: center; padding: 10px 0px;">
+            <div id="politicas" class="tabcontent">
+                <h3>Políticas</h3>
+                <ul class="lista">
+                    <li>Políticas de Alta</li>
+                    <li>Políticas de Baja</li>
+                </ul>
+                <h3>Funcionalidad de Agregar Política de alta y baja</h3>
+                <p>En la pestaña 'Agregar', se despliega un formulario que permite crear nuevas políticas. 
+                Los campos principales del formulario son:
+                </p>
+                <ul class="lista">
+                    <li>Nombre de la política.</li>
+                    <li>Comando ejecutable.</li>
+                    <li>Prioridad de la política.</li>
+                </ul>
+                <h3>Funcionalidad de Modificar Política</h3>
+                <p>En la pestaña 'Modificar', se puede seleccionar una política existente para actualizar sus datos. 
+                El formulario muestra los siguientes campos:</p>
+                <ul class="lista">
+                    <li>Nombre de la política seleccionada</li>
+                    <li>Comando ejecutable</li>
+                    <li>Prioridad</li>
+                </ul>
+                <h3>Lista de Políticas</h3>
+                <p>Debajo del formulario de modificación, se muestra una tabla con las políticas existentes, donde se presentan:</p>
+                <ul class="lista">
+                    <li>Nombre</li>
+                    <li>Descripción</li>
+                    <li>Prioridad</li>
+                </ul>
+                <p>Cada política tiene un botón 'Eliminar' que abre un modal de confirmación para eliminar la política seleccionada.</p>
+            </div>
+            <section class="menu-section">
+                <div id="usuarios" class="tabcontent">
+                    <h2>Usuarios</h2>
+                    <h3>Funcionalidad de Agregar Usuario</h3>
+                    <h4>El formulario incluye los siguientes campos:</h4>
+                    <ul class="lista">
+                        <li>Nombre de Usuario.</li>
+                        <li>Contraseña.</li>
+                        <li>Roles (con opciones de Administrador y Usuario)</li>
+                    </ul>
+                    <h3>Funcionalidad de Agregar Usuario</h3>
+                    <p>En la pestaña 'Modificar', se ofrece un formulario que permite seleccionar un usuario existente de la lista desplegable y modificar su nombre de usuario, contraseña y roles.</p>
+                    <h3>Lista de Usuarios</h3>
+                    <p>Debajo del formulario de modificación, se muestra una tabla con los usuarios existentes, indicando su nombre y rol. Cada usuario tiene un botón 'Eliminar' que abre un modal para confirmar la eliminación del usuario seleccionado.</p>
+                </div>
+                <div id="cuentas" class="tabcontent">
+                    <h2>Cuentas</h2>
+                    <p>Administra las cuentas y sus políticas asociadas.</p>
+                    <h3>Funcionalidad de Agregar Cuentas</h3>
+                    <p>En la pestaña 'Agregar Cuenta', se despliega un formulario que permite crear nuevas cuentas. 
+                    Los campos principales del formulario son:</p>
+                    <ul class="lista">
+                        <li>ID de la cuenta</li>
+                        <li>Nombre de la cuenta</li>
+                    </ul>
+                    <h3>Funcionalidad de Modificar Cuentas</h3>
+                    <p>En la pestaña 'Modificar Cuenta', se puede seleccionar una cuenta existente para actualizar su ID y su nombre. 
+                    El formulario muestra los siguientes campos:</p>
+                    <ul class="lista">
+                        <li>Nuevo ID de la cuenta</li>
+                        <li>Nuevo nombre de la cuenta</li>
+                    </ul>
+                    <h3>Funcionalidad de Agregar Políticas a Cuentas</h3>
+                    <p>En la pestaña 'Agregar Políticas/Cuentas', se despliega un formulario que permite agregar políticas a una cuenta seleccionada. 
+                    Los campos principales son:</p>
+                    <ul class="lista">
+                        <li>Selección de la cuenta</li>
+                        <li>Selección de las políticas asociadas</li>
+                    </ul>
+                    <p>(En esta sección se puede seleccionar más de una política seleccionando el icono     y para quitar una política el icono   )</p>
+                    <h3>Lista de Cuentas</h3>
+                    <p>Debajo de las pestañas, se muestra una tabla con las cuentas existentes, que incluye los siguientes datos:</p>
+                    <ul class="lista">
+                        <li>ID de la cuenta</li>
+                        <li>Nombre de la cuenta</li>
+                    </ul>
+                    <p>Cada cuenta tiene dos opciones de acción:</p>
+                    <ul class="lista">
+                        <li>'Eliminar' para borrar la cuenta seleccionada</li>
+                        <li>'Detalles' para ver más información relacionada con la cuenta y las políticas asociadas</li>
+                    </ul>
+                </div>
+
+                <div id="scripts" class="tabcontent">
+                    <h2>Scripts</h2>
+                    <p>Genera scripts para dar de alta o baja, o para cuentas específicas.</p>
+                
+                    <h3>Clientes Nuevos</h3>
+                    <h4>Políticas Clientes Nuevos</h4>
+                    <h5>Funcionalidad de Selección de política para una cuenta nueva</h5>
+                    <p>El usuario puede seleccionar una cuenta (E3 ó E5) del menú desplegable. Según la cuenta seleccionada, las políticas asociadas se muestran en la página.
+                    Las políticas se pueden actualizar según sea requerido.</p>
+                
+                    <h4>Scripts Clientes Nuevos</h4>
+                    <h5>Funcionalidad de Selección de Cuenta, Tipo de Cuenta y Políticas</h5>
+                    <p>El usuario puede seleccionar una cuenta y un tipo de cuenta del menú desplegable (E3 ó E5). Según la cuenta seleccionada, las políticas asociadas se muestran dinámicamente en la página.</p>
+                    <h5>Funcionalidad del Generador de Scripts</h5>
+                    <p>El formulario principal permite al usuario seleccionar la cuenta que tiene las políticas asignadas, ingresar el nombre del archivo, elegir un tipo de cuenta (E3 o E5), y un número local opcional. El script se genera cuando el usuario envía el formulario.
+                    El script generado se muestra en la sección 'preview' y puede descargarse como un archivo .ps1.</p>
+                </div>
+
+            </section>
+        </div>
+
+    </main>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Automatically open the first tab
+        window.addEventListener('load', (event) => {
+            document.getElementsByClassName("tablinks")[0].click();
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/program.js') }}"></script>
+
+
+    {% endblock %}
+
+

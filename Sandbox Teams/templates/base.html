@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Scripts</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
+    <link id="logo" rel="icon" href="{{ url_for('static', filename='imagenes/titulo.ico') }}" type="image/ico">
+    <script src="{{ url_for('static', filename='funciones/script1.js') }}"></script>
+</head>
+<body class="contenedor">
+    <header class="cabeza">
+        <div>
+            <img class="imgcallmyway" src="{{ url_for('static', filename='imagenes/Captura_de_pantalla_2024-08-24_110935-removebg-preview.png') }}" alt="CallMyWay Logo">
+        </div>
+        <div>
+            <img class="imgteams" src="{{ url_for('static', filename='imagenes/image-removebg-preview.png') }}" alt="Teams Logo">
+        </div>
+    </header>
+    <nav class="linea1"></nav>
+    <nav class="linea2">   
+        <div>
+            <a href="/"><button class="inicio" aria-label="Inicio">Inicio</button></a>
+            <a href="/soporte"><button class="soporte" aria-label="Inicio">Soporte</button></a>
+            <a href="/respuestas"><button class="respuestas" aria-label="Respuestas">Respuestas</button></a>
+        </div>
+    </nav>
+    <main class="cuerpo">
+        {% block content %}
+        {% endblock %}
+
+
+        <div style="display: flex; justify-content: end; position: absolute; z-index: 1000; bottom: 0; right: 30px;">
+            <div id="chat_bot" class="chat_bot" style="display: block;">
+                <img class="imgbot" src="{{ url_for('static', filename='imagenes/bot blanco.png') }}" alt="Bot">
+            </div>
+            <div style="display: none;" id="asistente_virtual">
+                <div class="asistente_virtual">
+                    <div class="seccion_chat">
+
+                        <div class="titulo_chat">
+                            <div style="padding: 0; margin: 0; width: 100%; text-align: center;">
+                                <h4 style="background: #9dc010; color: #ffffff; padding: 5px 0; margin: 0; border-radius: 6px 6px 0 0 ;">Asistente Virtual</h4>
+                                <button id="cerrar_asistentevirtual" style="position: absolute; top: 0; right: 0;"><img class="imgcerrar" src="{{ url_for('static', filename='imagenes/flecha_hacia_abajo.png') }}" alt="Imagen Cerrar"></button>
+                            </div>
+                        </div>
+
+                        <div class="imagen_chat">
+                            <div style="padding: 5px 0; align-items: center; display: flex; justify-content: center;">
+                                <div><img class="imgcallmyway_asistentevirtual" src="{{ url_for('static', filename='imagenes/Captura_de_pantalla_2024-08-24_110935-removebg-preview.png') }}" alt="CallMyWay Logo"></div>
+                            </div>
+                        </div>
+                        <div class="cuerpo_chat">
+                            <ul class="chatbox" id="chatboxid">
+                                <li class="chat incoming"><p>¡Hola! Estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?</p></li>
+                            </ul>
+                        </div>
+                        <div class="mensaje_chat">
+                            <div>
+                                <div id="file-upload" class="message-input">
+                                    <div id="boton_archivo" class="boton_archivo">
+                                        <input type="file" accept="images/*" id="file-input" hidden>
+                                        <img class="imgarchivo" src="{{ url_for('static', filename='imagenes/enviar_archivo.png') }}" alt="Archivo">
+                                    </div>
+                                    <textarea class="textarea_chatbot" id="user-message" placeholder=" Escribe un mensaje" rows="1" required></textarea>
+                                    <span class="message-send" id="send-btn" onclick="sendMessage()">
+                                        <img class="imgenviar" src="{{ url_for('static', filename='imagenes/enviar-mensaje.png') }}" alt="Enviar">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </main>
+    <footer class="pie1">
+        <div id="mensaje" style="display: none; margin: 0; padding: 0;">
+            <div id = "mensaje_error">
+                <img id="error" class="img_error" src="{{ url_for('static', filename='imagenes/error.png') }}" alt="Imagen Error">
+                <div class="mensaje">
+                    <p style="padding: 0; margin: 0;">¡Por favor, seleccione una opción válida e ingrese un valor superior a 0 para continuar!</p>
+                </div>
+                <a href="/"><button class="volver">Volver</button></a>
+            </div>
+        </div>
+        <div id="shadow" class="sombra"></div>
+    </footer>
+    <footer class="pie2">
+        CallMyWay y sus logos son marcas registradas bajo la propiedad de CallMyWay N.Y. S. A. Licenciados por la Sutel bajo el título SUTEL-TH-003. Todos los derechos reservados.
+    </footer>
+    <div class="pie3" style="display: none;"></div>
+
+            <!-- JavaScript para gestionar la visibilidad -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('chat_bot').addEventListener('click', function() {
+            // Ocultar chat_bot
+            document.getElementById('chat_bot').style.display = 'none';
+            // Mostrar asistente_virtual
+            document.getElementById('asistente_virtual').style.display = 'block';
+        });
+    
+        document.getElementById('cerrar_asistentevirtual').addEventListener('click', function() {
+            // Ocultar asistente_virtual
+            document.getElementById('asistente_virtual').style.display = 'none';
+            // Mostrar chat_bot
+            document.getElementById('chat_bot').style.display = 'block';
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('file-input');
+        const fileUploadButton = document.getElementById('boton_archivo');
+
+        // Asegúrate de que el evento esté correctamente enlazado
+        fileUploadButton.addEventListener('click', function () {
+            fileInput.click();
+        });
+    });
+    </script>
+
+
+
+</body>
+</html>
